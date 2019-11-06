@@ -1,0 +1,98 @@
+.form {
+  &__group {
+    // @include clearfix;
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+  &__input {
+    padding: 1.5rem 2rem;
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.4rem;
+    background-color: rgba($color-white, 0.5);
+    border-radius: 0.2rem;
+    border: none;
+    display: block;
+    width: 90%;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.2s;
+    &:focus {
+      outline: none;
+      box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+      border-bottom: 0.3rem solid $color-primary;
+      background-color: rgba($color-white, 1);
+    }
+    &:focus:invalid {
+      border-bottom: 0.3rem solid $color-secondary-dark;
+    }
+
+    @include respond(phone) {
+      width: 100%;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+    display: block;
+    transition: all 0.4s;
+  }
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+  &__radio-group {
+    width: 50%;
+    font-size: $default-font-size;
+    float: left;
+
+    @include respond(tab-port) {
+      width: 100%;
+      float: none;
+      &:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+  &__radio-input {
+    display: none;
+    &:checked + .form__radio-label .form__radio-btn::after {
+      opacity: 1;
+    }
+  }
+
+  &__radio-label {
+    padding-left: 4rem;
+    position: relative;
+  }
+
+  &__radio-btn {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0.5rem solid $color-primary;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &::after {
+      content: "";
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: $color-primary;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  }
+}

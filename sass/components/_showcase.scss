@@ -1,0 +1,84 @@
+.showcase {
+  position: relative;
+
+  &__photo {
+    max-width: 55%;
+    border-radius: 0.2rem;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+    position: absolute;
+    z-index: 10;
+    transition: all 0.2s;
+
+    @include respond(tab-land) {
+      max-width: 33%;
+      position: relative;
+    }
+    @include respond(phone) {
+
+     display: block;
+      max-width: 65%;
+    margin: 2rem auto;
+    }
+
+    &--p1 {
+      top: -2rem;
+      left: 0;
+
+      @include respond(tab-land) {
+        top: 0;
+        left: 2rem;
+      }
+      @include respond(phone) {
+     left: 0;
+    }
+    }
+    &--p2 {
+      top: 3rem;
+      right: 0;
+
+      @include respond(tab-land) {
+        top: 0;
+        left: 0;
+        z-index: 20;
+        transform: scale(1.2);
+      }
+      @include respond(tab-port) {
+        transform: scale(1.1);
+      }
+      @include respond(phone) {
+     left: 0;
+     transform: scale(1);
+    }
+    }
+    &--p3 {
+      top: 12rem;
+      left: 12rem;
+      @include respond(tab-land) {
+        top: 0;
+        left: -2rem;
+      }
+      @include respond(phone) {
+     left: 0;
+    }
+    }
+    &:hover {
+      outline: 1.5rem solid $color-primary;
+      outline-offset: 2rem;
+      transform: scale(1.2) translateY(-0.5rem);
+      z-index: 30;
+      box-shadow: 0 2rem 4rem rgba($color-black, 0.6);
+
+      @include respond(tab-port) {
+        outline: 1rem solid $color-primary;
+        outline-offset: 0.5rem;
+        transform: scale(1.1) translateY(-0.5rem);
+      }
+    }
+  }
+  &:hover &__photo:not(:hover) {
+    transform: scale(0.95);
+    @include respond(phone) {
+    transform: scale(1);
+  }
+  }
+}

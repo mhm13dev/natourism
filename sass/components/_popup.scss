@@ -1,0 +1,127 @@
+.popup {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  background: rgba($color-black, 0.9);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s;
+
+  &:target {
+    visibility: visible;
+    opacity: 1;
+  }
+  &:target &__content {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.4);
+    width: 75%;
+    background: $color-white;
+    border-radius: 0.3rem;
+    display: table;
+    overflow: hidden;
+    border: 2px solid $color-primary;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s;
+    @include respond(tab-land) {
+      display: block;
+    }
+
+    @include respond(tab-port) {
+      max-height: 60vh;
+      overflow: auto;
+    }
+  }
+  &__left {
+    width: 33.333333%;
+    display: table-cell;
+    @include respond(tab-land) {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin: 2rem 0;
+      @include clearfix;
+    }
+  }
+  &__right {
+    width: 66.666666%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 2rem 5rem;
+
+    @include respond(tab-land) {
+      display: block;
+      width: 100%;
+    }
+  }
+  &__tour-pic {
+    width: 100%;
+    display: block;
+    border-radius: .3rem;
+    @include respond(tab-land) {
+      display: inline-block;
+      width: 30%;
+      &:not(:last-child) {
+        margin-right: 2%;
+      }
+    }
+    @include respond(tab-port) {
+      width: 47%;
+    }
+  }
+
+  &__text {
+    font-size: 1.5rem;
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 2px solid $color-grey-light-2;
+    @include respond(tab-land) {
+      font-size: 1.6rem;
+    }
+    @include respond(phone) {
+      column-count: 1;
+    }
+  }
+
+  &__close-btn {
+    &:link,
+    &:visited {
+      width: 3rem;
+      height: 3rem;
+      display: inline-block;
+      text-decoration: none;
+      color: $color-white;
+      background: orangered;
+      border-radius: 50%;
+      position: absolute;
+      top: 4rem;
+      right: 4rem;
+      font-size: 3rem;
+      line-height: 1;
+      text-align: center;
+
+       @include respond(tab-port) {
+    
+      font-size: 2.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+  
+    }
+    }
+    &:hover,
+    &:active {
+      color: $color-primary;
+    }
+  }
+}
